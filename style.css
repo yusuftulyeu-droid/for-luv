@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    background: #000;
+    overflow: hidden; /* Scroll-ды толық құлыптау, сайт секірмеуі үшін */
+    color: white;
+    min-height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+/* STARS */
+#stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: black;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+    50% { opacity: .2; }
+}
+
+/* HEARTS */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    color: #ff3b5c;
+    animation: floatUp 6s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* WELCOME */
+#welcome {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.welcome-content {
+    max-width: 700px;
+    backdrop-filter: blur(25px);
+    background: rgba(255, 255, 255, .05);
+    padding: 50px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.welcome-content h1 {
+    font-size: 70px;
+    margin-bottom: 25px;
+}
+
+.welcome-content p {
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+button {
+    margin-top: 25px;
+    padding: 16px 35px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    background: white;
+    color: black;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* BOOK */
+#bookSection {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.book {
+    width: 1200px;
+    max-width: 95%;
+    perspective: 2000px;
+}
+
+.page {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 30px;
+    animation: flip .8s ease;
+}
+
+@keyframes flip {
+    from {
+        opacity: 0;
+        transform: rotateY(-70deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0);
+    }
+}
+
+.page img {
+    width: 55%;
+    height: 650px;
+    object-fit: cover;
+    border-radius: 25px;
+    animation: zoom 8s infinite alternate;
+}
+
+@keyframes zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.04); } /* Көлемін сәл азайттық, экраннан шықпауы үшін */
+}
+
+.textBox {
+    flex: 1;
+}
+
+.textBox h2 {
+    margin-bottom: 25px;
+    font-size: 25px;
+}
+
+.textBox p {
+    font-size: 28px;
+    line-height: 1.7;
+}
+
+/* FINAL */
+#finalPage {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.final-card {
+    max-width: 900px;
+    text-align: center;
+    background: rgba(255, 255, 255, .05);
+    backdrop-filter: blur(25px);
+    padding: 50px;
+    border-radius: 30px;
+}
+
+.final-card h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.final-card p {
+    font-size: 24px;
+    line-height: 2;
+}
+
+#answer {
+    margin-top: 30px;
+    color: #ff6b9a;
+} 
+
+/* Responsive tweaks for small screens */
+@media (max-width: 768px) {
+    .welcome-content { padding: 24px; }
+    .welcome-content h1 { font-size: 36px; }
+    .welcome-content p { font-size: 16px; }
+
+    .book { width: 100%; }
+    .page { flex-direction: column; gap: 16px; padding: 18px; }
+    .page img { width: 100%; height: auto; max-height: 300px; }
+    .textBox h2 { font-size: 18px; }
+    .textBox p { font-size: 18px; }
+
+    .final-card { padding: 24px; }
+    .final-card h1 { font-size: 32px; }
+    .final-card p { font-size: 16px; }
+    button { width: 100%; padding: 14px 18px; }
+}
