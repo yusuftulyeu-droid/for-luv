@@ -50,7 +50,7 @@ document.getElementById("nextBtn").onclick = () => {
         return;
     }
 
-    photo.src = `images/${current}.jpg`;
+   photo.src = `${current}.jpg`;
     pageText.innerText = messages[current - 1];
     pageNumber.innerText = `${current} / 20`;
 
