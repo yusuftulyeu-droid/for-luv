@@ -51,7 +51,7 @@ document.getElementById("nextBtn").onclick = () => {
     }
 
    photo.src = `${current}.jpg`;
-    pageText.innerText = messages[current - 1];
+    pageText.innerText = messages[current - 0];
     pageNumber.innerText = `${current} / 20`;
 
     const pageEl = document.querySelector(".page");
