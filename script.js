@@ -7,14 +7,14 @@ const messages = [
     "Бүгін де дәл сондай қателік жібердім.",
     "Сені ренжітейін деген ойымда болған емес.",
     "Сенің көңілің түскені маған өте ауыр, мен де қиналамын.",
-    "Мен сенің ,мейіріміңді қатты бағалаймын.",
+    "Мен сенің мейіріміңді қатты бағалаймын.",
     "Сен маған Алланың берген сыйысың.",
     "Сен менің нәзігімсің.",
     "Сен менің ең әдемі кездейсоқтығымсың.",
     "Жарығым, сен әр сәт ойымнан кетпейсің.",
     "Мен сені қатты жақсы көремін.",
     "Кейде жеткізе алмасам да, жүрегім сен деп тұрады.",
-    "Бар болғаның үшін рақмет.",
+    "Маған сенгенің үшін рақмет.",
     "Маған шыдағаның үшін рақмет.",
     "Бүгінгі әрекетім үшін шын жүректен кешірім сұраймын.",
     "Пашконым, артық кетіп қалдым.",
@@ -30,12 +30,10 @@ const pageNumber = document.getElementById("pageNumber");
 pageText.innerText = messages[0];
 
 document.getElementById("startBtn").onclick = () => {
-    // Хатты ашқан сәтте ән автоматты түрде қосылады
     const music = document.getElementById("bgMusic");
     if (music) {
-        music.play().catch(error => console.log("Браузер әнді ойнатуды блоктады:", error));
+        music.play().catch(error => console.log("Браузер блоктады:", error));
     }
-
     document.getElementById("welcome").style.display = "none";
     document.getElementById("bookSection").classList.remove("hidden");
 };
@@ -43,15 +41,15 @@ document.getElementById("startBtn").onclick = () => {
 document.getElementById("nextBtn").onclick = () => {
     current++;
 
-    // Нақты 20 сурет болғандықтан, 20-дан асқанда бітеді
     if (current > 20) {
         document.getElementById("bookSection").style.display = "none";
         document.getElementById("finalPage").classList.remove("hidden");
         return;
     }
 
-   photo.src = `${current}.jpg`;
-    pageText.innerText = messages[current - 0];
+    // images/ папкасынсыз, тікелей сырттан оқу
+    photo.src = `${current}.jpg`;
+    pageText.innerText = messages[current - 1];
     pageNumber.innerText = `${current} / 20`;
 
     const pageEl = document.querySelector(".page");
@@ -87,10 +85,7 @@ function createHeart() {
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = (Math.random() * 20 + 20) + "px";
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+    setTimeout(() => { heart.remove(); }, 6000);
 }
 setInterval(createHeart, 350);
 
