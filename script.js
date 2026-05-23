@@ -27,7 +27,9 @@ const photo = document.getElementById("photo");
 const pageText = document.getElementById("pageText");
 const pageNumber = document.getElementById("pageNumber");
 
+// Ең бірінші бет ашылғанда мәтін мен сурет нақты шығуы үшін
 pageText.innerText = messages[0];
+photo.src = `1.jpg`; 
 
 document.getElementById("startBtn").onclick = () => {
     const music = document.getElementById("bgMusic");
@@ -47,7 +49,6 @@ document.getElementById("nextBtn").onclick = () => {
         return;
     }
 
-    // images/ папкасынсыз, тікелей сырттан оқу
     photo.src = `${current}.jpg`;
     pageText.innerText = messages[current - 1];
     pageNumber.innerText = `${current} / 20`;
